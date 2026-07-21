@@ -13,9 +13,9 @@ The architecture documentation explains that PathReview combines vector similari
 
 **Branch name:** `docs/36-hybrid-retrieval-scoring`
 
-**Setup confirmation:** [ ] App runs locally at localhost:5173
+**Setup confirmation:** [x ] App runs locally at localhost:5173
 
-**Cohort ledger:** [ ] Issue added to cohort ledger
+**Cohort ledger:** [ x] Issue added to cohort ledger
 
 ### Issue selection notes — “Is this right for me?”
 
