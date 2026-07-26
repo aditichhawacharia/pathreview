@@ -60,6 +60,9 @@ A plan-execute orchestrator that coordinates multiple analysis tools. Each tool 
 Hybrid retrieval (vector similarity + BM25 keyword) fetches relevant context from the user's ingested documents. The generator uses prompt templates to produce structured, evidence-based feedback. The evaluator scores retrieval relevance and generation faithfulness.
 
 #### Hybrid Retrieval Scoring
+<!-- TODO #36: hybrid scoring formula undocumented here. See rag/hybrid.py for
+     normalization logic (score / max_score per method), weighted sum
+     (vector_weight=0.7, bm25_weight=0.3), threshold filter, and top-k sort. -->
 
 The RAG system combines semantic vector retrieval with BM25 keyword retrieval. Vector retrieval identifies chunks whose embeddings are semantically similar to the query, while BM25 prioritizes chunks containing relevant query terms.
 
