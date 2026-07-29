@@ -62,9 +62,10 @@ None.
 
 ---
 
+
 ### Check-in 2 (end of week)
 
-**PR link:** [paste your PR URL here once submitted]
+**PR link:** https://github.com/ascherj/pathreview/pull/393
 
 **Branch:** `docs/36-hybrid-retrieval-scoring`
 
@@ -82,4 +83,4 @@ modifications. `make test-unit` confirms no existing tests are affected.
 
 **Self-review confirmation:** [x] make check passes  [x] make test-unit passes
 
-**Draft PR feedback received from:** [peer name or Slack handle, or "none"]
+**Draft PR feedback received from:** none
