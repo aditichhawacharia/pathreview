@@ -36,3 +36,50 @@ Opened `docs/ARCHITECTURE.md` locally and confirmed that the RAG System section 
 
 **Blockers or open questions:**  
 Need to re-read `rag/hybrid.py` in full before writing the doc to confirm whether `vector_weight` and the minimum-score threshold are hardcoded constants or caller-configurable parameters — this affects how the doc describes the filter step and whether it should mention overridable defaults.
+
+---
+## Week 9 — Solution building & PR submission
+
+### Check-in 1 (mid-week)
+
+**Current progress:**
+Re-read `rag/hybrid.py` in full to verify the normalization logic, weight
+constants, threshold, and sort behavior. Confirmed that `vector_weight=0.7`
+and `keyword_weight=0.3` are constructor-level defaults on `HybridRetriever`,
+that per-method normalization divides each raw score by the highest score that
+method returned, and that `min_score=0.3` and `max_chunks=10` are defaults on
+`retrieve()`. Drafted the Hybrid Retrieval Scoring subsection in
+`docs/ARCHITECTURE.md` covering normalization, the weighted-sum formula,
+default weights, threshold filtering, and a worked numerical example.
+
+**Next steps:**
+Make the minor wording fix clarifying that weights are set at retriever
+initialization (not per-query), run `make check` to confirm no linting or
+formatting errors, open a draft PR, and request peer feedback.
+
+**Blockers:**
+None.
+
+---
+
+### Check-in 2 (end of week)
+
+**PR link:** [paste your PR URL here once submitted]
+
+**Branch:** `docs/36-hybrid-retrieval-scoring`
+
+**What you built:**
+Added a "Hybrid Retrieval Scoring" subsection to `docs/ARCHITECTURE.md`
+explaining how PathReview blends vector similarity and BM25 keyword scores.
+The section documents per-method min-max normalization, the weighted-sum
+formula (`hybrid_score = 0.7 × vector_norm + 0.3 × bm25_norm`), the default
+weights and where they are configured, the minimum-score filter, and a
+concrete numerical example showing two chunks ranked end-to-end.
+
+**Tests added or updated:**
+No tests added — this is a documentation-only change with no code
+modifications. `make test-unit` confirms no existing tests are affected.
+
+**Self-review confirmation:** [x] make check passes  [x] make test-unit passes
+
+**Draft PR feedback received from:** [peer name or Slack handle, or "none"]
