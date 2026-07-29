@@ -87,6 +87,7 @@ The default weights are:
 vector_weight = 0.7
 keyword_weight = 0.3
 ```
+These weights are set when the retriever is initialized and apply to all queries made by that instance.
 
 These defaults give semantic similarity more influence while still allowing exact keyword matches to improve a chunk's ranking. If a chunk appears in only one retrieval result set, its normalized score for the missing retrieval method is `0`.
 
