@@ -63,6 +63,7 @@ None.
 ---
 
 
+
 ### Check-in 2 (end of week)
 
 **PR link:** https://github.com/ascherj/pathreview/pull/393
@@ -70,17 +71,21 @@ None.
 **Branch:** `docs/36-hybrid-retrieval-scoring`
 
 **What you built:**
-Added a "Hybrid Retrieval Scoring" subsection to `docs/ARCHITECTURE.md`
-explaining how PathReview blends vector similarity and BM25 keyword scores.
-The section documents per-method min-max normalization, the weighted-sum
-formula (`hybrid_score = 0.7 × vector_norm + 0.3 × bm25_norm`), the default
-weights and where they are configured, the minimum-score filter, and a
-concrete numerical example showing two chunks ranked end-to-end.
+Added a “Hybrid Retrieval Scoring” subsection to `docs/ARCHITECTURE.md` explaining how PathReview blends vector similarity and BM25 keyword scores. The section documents per-method score normalization, the weighted-sum formula (`hybrid_score = 0.7 × vector_norm + 0.3 × bm25_norm`), the default weights and where they are configured, the minimum-score filter, and a concrete numerical example showing how two chunks are scored and ranked.
 
 **Tests added or updated:**
-No tests added — this is a documentation-only change with no code
-modifications. `make test-unit` confirms no existing tests are affected.
+No new automated test files were added because the implementation in `rag/hybrid.py` was not modified. This contribution only documents the existing retrieval behavior.
 
-**Self-review confirmation:** [x] make check passes  [x] make test-unit passes
+To validate the change, I ran the existing unit test suite with `make test-unit`, including the hybrid retrieval tests that cover score normalization, vector and keyword weighting, minimum-score filtering, result ordering, and maximum-chunk limits. I also ran `make check` to verify that the documentation change introduced no formatting, linting, or repository validation errors.
 
-**Draft PR feedback received from:** none
+**Test files reviewed:**
+
+* `tests/unit/test_hybrid.py` — verifies the hybrid retriever’s scoring, filtering, ranking, and result-limit behavior.
+* `rag/hybrid.py` — reviewed directly to confirm that the documented formula, default weights, threshold, and sorting behavior match the implementation.
+
+**Coverage provided:**
+The existing unit tests exercise the implementation described by the new documentation. Since this PR does not change executable code, no new code paths were introduced and the project’s test coverage percentage is unchanged.
+
+**Self-review confirmation:** [x] `make check` passes  [x] `make test-unit` passes
+
+**Draft PR feedback received from:** None
